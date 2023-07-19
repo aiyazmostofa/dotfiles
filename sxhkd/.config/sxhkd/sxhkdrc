@@ -1,0 +1,41 @@
+control + alt + t 
+		  alacritty
+
+control + alt + e
+		  emacs
+
+control + alt + f
+		  firefox
+
+control + alt + x
+		  bspc node -c
+
+control + alt + shift + x
+		  bspc node -k
+
+control + alt + @space
+		  rofi -show run
+
+control + alt + r
+		  pkill -USR1 -x sxhkd
+
+control + alt + shift + r
+		  bspc wm -r
+
+control + alt + {h,j,k,l}
+		  bspc node -f {west,south,north,east}
+
+control + alt + shift + {h,j,k,l}
+		  bspc node -s {west,south,north,east}
+
+control + alt + n
+		  bspc desktop -f next.local
+
+control + alt + p
+		  bspc desktop -f prev.local
+
+control + alt + shift + n
+		  bspc node -d next.local
+
+control + alt + shift + p
+		  bspc node -d prev.local
