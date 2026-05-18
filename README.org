@@ -6,8 +6,6 @@ Tested on Bluefin DX and Bazzite DX. Run the =setup.sh= script
 initially. Run the =sync.sh= to sync.
 
 If you are not using a UBlue machine, then ensure that you have =brew= and =fish= installed first.
-Since =stow= is installed with Homebrew, make sure to set the =PATH= correctly!
-
 No warranty is provided with these dotfiles.
 Use at your own risk!
 
