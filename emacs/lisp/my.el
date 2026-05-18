@@ -12,7 +12,7 @@
          (message "%s is undefined" sequence)))))
 
 ;; TODO: Make these configurable
-(defconst my--font-name-mono "Jetbrains Mono")
+(defconst my--font-name-mono "JetBrainsMono Nerd Font")
 (defconst my--font-name-sans "Adwaita Sans")
 (defvar my--font-size 130)
 (defun my-font-change-size (increment)
