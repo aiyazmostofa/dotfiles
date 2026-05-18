@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: start-with-arguments
+# key: \start[
+# --
+\\start$1[$2]
+  $0
+\\stop$1

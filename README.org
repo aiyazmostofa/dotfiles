@@ -1,0 +1,9 @@
+* Dotfiles
+My dotfiles.
+
+** Usage
+Tested on Bluefin DX and Bazzite DX. Run the =setup.sh= script
+initially. Run the =sync.sh= to sync.
+
+** License
+[[file:LICENSE][GNU General Public License v3.0]]

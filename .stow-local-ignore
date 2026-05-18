@@ -1,0 +1,6 @@
+^\.git
+^Brewfile
+^LICENSE
+^README\.org
+^setup\.sh
+^sync\.sh

@@ -1,0 +1,7 @@
+brew "cmake"
+brew "libtool"
+brew "mise"
+brew "ripgrep"
+brew "stow"
+brew "aiyazmostofa/tap/nix"
+brew "aiyazmostofa/tap/emacs"
