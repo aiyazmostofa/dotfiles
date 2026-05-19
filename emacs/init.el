@@ -1,8 +1,13 @@
+;; Basic stuff to get package management working
 (require 'package)
 (add-to-list
  'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
+
+;; Personal helper functions defined here
 (use-package my :load-path "lisp/")
+
+;; Changing some annoying default Emacs behavior
 (setq
  custom-file (locate-user-emacs-file "custom.el")
  inhibit-startup-screen t
@@ -11,7 +16,6 @@
  sentence-end-double-space nil
  ring-bell-function 'ignore
  vc-follow-symlinks t)
-(load custom-file 'noerror)
 (setq-default
  truncate-lines t
  indent-tabs-mode nil
@@ -23,11 +27,14 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (my-font-change-size 0)
+(load custom-file 'noerror)
+
+;; Cosmetic
 (use-package modus-themes :ensure t)
 (use-package standard-themes :ensure t)
 (use-package ef-themes :ensure t)
 (use-package doric-themes :ensure t)
-(modus-themes-select 'ef-autumn)
+(modus-themes-select 'ef-owl)
 (use-package spacious-padding
   :ensure t
   :config (spacious-padding-mode 1))
@@ -35,6 +42,8 @@
   :load-path "lisp/"
   :config (setq-default mode-line-format loon-line))
 (use-package prot-ptyxis :load-path "lisp/")
+
+;; Supercharging Emacs's defaults
 (use-package orderless
   :ensure t
   :custom
@@ -54,6 +63,8 @@
   :bind
   (:map vertico-map
         ("C-<backspace>" . vertico-directory-delete-word)))
+
+;; Keybindings (I am evil)
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (use-package evil
   :ensure t
@@ -98,6 +109,11 @@
   :ensure t
   :custom (evil-collection-repl-submit-state 'insert)
   :config (evil-collection-init))
+(use-package transient
+  :defer t
+  :bind (:map transient-map ("<escape>" . transient-quit-one)))
+
+;; Things that make normal terminals/shells hard to use
 (use-package vterm
   :ensure t
   :defer t)
@@ -114,14 +130,16 @@
 (use-package exec-path-from-shell
   :ensure t
   :config (exec-path-from-shell-initialize))
-(add-to-list 'directory-abbrev-alist '("^/nix" . "/var/nix"))
-(use-package corfu
+(use-package magit
   :ensure t
-  :custom
-  (corfu-auto t)
-  (corfu-auto-delay 0.1)
-  :hook (prog-mode . corfu-mode)
-  :bind (:map corfu-map ("RET" . nil)))
+  :defer t)
+(use-package forge
+  :after magit
+  :ensure t
+  :custom (auth-sources '("~/.ssh/authinfo")))
+(add-to-list 'directory-abbrev-alist '("^/nix" . "/var/nix"))
+
+;; Things that make text editing less bad
 (use-package cape :ensure t)
 (use-package eglot
   :custom (eglot-autoshutdown t)
@@ -134,14 +152,13 @@
         ("C-c r" . 'eglot-rename)
         ("C-c f" . 'eglot-format)
         ("C-c a" . 'eglot-code-actions)))
-(use-package magit
+(use-package corfu
   :ensure t
-  :defer t
-  :bind (:map transient-map ("<escape>" . transient-quit-one)))
-(use-package forge
-  :after magit
-  :ensure t
-  :custom (auth-sources '("~/.ssh/authinfo")))
+  :custom
+  (corfu-auto t)
+  (corfu-auto-delay 0.1)
+  :hook (prog-mode . corfu-mode)
+  :bind (:map corfu-map ("RET" . nil)))
 (use-package yasnippet
   :ensure t
   :custom (yas-prompt-functions '(yas-no-prompt))
@@ -152,12 +169,14 @@
 (use-package rainbow-delimiters
   :ensure t
   :hook (prog-mode . rainbow-delimiters-mode))
-(use-package org
-  :defer t
-  :custom (org-edit-src-content-indentation 0))
 (use-package compile
   :defer t
   :custom (compilation-scroll-output t))
+
+;; Languages I use
+(use-package org
+  :defer t
+  :custom (org-edit-src-content-indentation 0))
 (use-package zig-mode
   :ensure t
   :defer t
