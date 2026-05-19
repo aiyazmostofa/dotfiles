@@ -1,5 +1,7 @@
 ;;; prot-ptyxis.el --- Protesilaos's themes for Ptyxis terminal emulator -*- lexical-binding: t; -*-
 
+;; Hopefully deprecated by Ghostty and/or 'https://github.com/protesilaos/modus-themes-exporter'
+
 ;; Usage:
 ;; M-x prot-ptyxis-install-themes
 
