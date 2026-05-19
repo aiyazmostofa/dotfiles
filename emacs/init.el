@@ -67,55 +67,6 @@
   (:map vertico-map
         ("C-<backspace>" . vertico-directory-delete-word)))
 
-;; Keybindings (I am evil)
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-(use-package evil
-  :ensure t
-  :custom
-  (evil-undo-system 'undo-redo)
-  (evil-want-keybinding nil)
-  :config
-  (evil-mode 1)
-  (evil-define-key
-    '(normal motion visual) 'global
-    (kbd "q") 'bury-buffer))
-(use-package zucchini :load-path "lisp/")
-(use-package general
-  :after evil
-  :ensure t
-  :config
-  (general-create-definer leader-def :prefix "SPC")
-  (leader-def
-    :states '(normal motion visual)
-    :keymaps 'override
-    "SPC" #'execute-extended-command
-    "u" #'universal-argument
-    "k" #'kill-current-buffer
-    "v" #'my-vterm
-    "-" (lambda () (interactive) (my-font-change-size -10))
-    "=" (lambda () (interactive) (my-font-change-size +10))
-    "x" (my-key-prefix "C-x ")
-    "f" (my-key-prefix "C-x C-")
-    "c" (my-key-prefix "C-c ")
-    "j" (my-key-prefix "C-c C-")
-    "h" (my-key-prefix "C-h ")
-    "p" (my-key-prefix "C-x p ")
-    "g" #'zucchini-play
-    "r" #'consult-ripgrep
-    "b" #'consult-buffer
-    "l" #'consult-line
-    "a" #'my-arrange-windows
-    "s" #'other-window
-    "d" #'delete-window))
-(use-package evil-collection
-  :after evil
-  :ensure t
-  :custom (evil-collection-repl-submit-state 'insert)
-  :config (evil-collection-init))
-(use-package transient
-  :defer t
-  :bind (:map transient-map ("<escape>" . transient-quit-one)))
-
 ;; Things that make normal terminals/shells hard to use
 (use-package vterm
   :ensure t
@@ -124,6 +75,9 @@
   :defer t
   :custom (tramp-histfile-override t)
   :config (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
+(use-package compile
+  :defer t
+  :custom (compilation-scroll-output t))
 (use-package dired
   :defer t
   :custom
@@ -140,6 +94,7 @@
   :after magit
   :ensure t
   :custom (auth-sources '("~/.ssh/authinfo")))
+(use-package zucchini :load-path "lisp/")
 (add-to-list 'directory-abbrev-alist '("^/nix" . "/var/nix"))
 
 ;; Things that make text editing less bad
@@ -172,9 +127,6 @@
 (use-package rainbow-delimiters
   :ensure t
   :hook (prog-mode . rainbow-delimiters-mode))
-(use-package compile
-  :defer t
-  :custom (compilation-scroll-output t))
 
 ;; Languages I use
 (use-package org
@@ -221,3 +173,52 @@
   (treesit-auto-install-all)
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
+
+;; Keybindings (I am evil)
+;; Any keybindings I set above also work in vanilla Emacs
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+(use-package evil
+  :ensure t
+  :custom
+  (evil-undo-system 'undo-redo)
+  (evil-want-keybinding nil)
+  :config
+  (evil-mode 1)
+  (evil-define-key
+    '(normal motion visual) 'global
+    (kbd "q") 'bury-buffer))
+(use-package general
+  :after evil
+  :ensure t
+  :config
+  (general-create-definer leader-def :prefix "SPC")
+  (leader-def
+    :states '(normal motion visual)
+    :keymaps 'override
+    "SPC" #'execute-extended-command
+    "u" #'universal-argument
+    "k" #'kill-current-buffer
+    "v" #'my-vterm
+    "-" (lambda () (interactive) (my-font-change-size -10))
+    "=" (lambda () (interactive) (my-font-change-size +10))
+    "x" (my-key-prefix "C-x ")
+    "f" (my-key-prefix "C-x C-")
+    "c" (my-key-prefix "C-c ")
+    "j" (my-key-prefix "C-c C-")
+    "h" (my-key-prefix "C-h ")
+    "p" (my-key-prefix "C-x p ")
+    "g" #'zucchini-play
+    "r" #'consult-ripgrep
+    "b" #'consult-buffer
+    "l" #'consult-line
+    "a" #'my-arrange-windows
+    "s" #'other-window
+    "d" #'delete-window))
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :custom (evil-collection-repl-submit-state 'insert)
+  :config (evil-collection-init))
+(use-package transient
+  :defer t
+  :bind (:map transient-map ("<escape>" . transient-quit-one)))
