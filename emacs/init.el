@@ -26,10 +26,13 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(my-font-change-size 0)
 (load custom-file 'noerror)
 
 ;; Cosmetic
+(setq my-font-name-mono "JetBrainsMono Nerd Font")
+(setq my-font-name-sans "Adwaita Sans")
+(setq my-font-size 130)
+(my-font-change-size 0)
 (use-package modus-themes :ensure t)
 (use-package standard-themes :ensure t)
 (use-package ef-themes :ensure t)
