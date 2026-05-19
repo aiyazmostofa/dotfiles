@@ -4,16 +4,18 @@
 ;; (setq-default mode-line-format loon-line)
 
 (defun loon-line--state-bg ()
-  (let ((face (if (mode-line-window-selected-p)
-                  'font-lock-keyword-face
-                'mode-line-inactive)))
-    (face-attribute face :foreground)))
+  (face-attribute
+   (if (mode-line-window-selected-p)
+       'font-lock-keyword-face
+     'mode-line-inactive)
+   :foreground))
 
 (defun loon-line--state-fg ()
-  (let ((face (if (mode-line-window-selected-p)
-                  'default
-                'mode-line-inactive)))
-    (face-attribute face :background)))
+  (face-attribute
+   (if (mode-line-window-selected-p)
+       'default
+     'mode-line-inactive)
+   :background))
 
 (defun loon-line--state-symbol ()
   (cond
@@ -36,15 +38,13 @@
          ':box `(:line-width 1 :color ,(loon-line--state-bg)))))
 
 (defun loon-line--dirty-buffer-indicator ()
-  (propertize
-   (if (and buffer-file-name (buffer-modified-p)) " *" "")
-   'face
-   'error))
+  (if (and buffer-file-name (buffer-modified-p))
+      (propertize " *" 'face 'error)
+    ""))
 
 (defun loon-line--zoom-value ()
-  (if (and
-       (display-graphic-p)
-       (not (zerop text-scale-mode-amount)))
+  (if (and (display-graphic-p)
+           (not (zerop text-scale-mode-amount)))
       (concat
        (if (> text-scale-mode-amount 0) " +" " ")
        (number-to-string text-scale-mode-amount))
