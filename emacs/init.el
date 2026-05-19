@@ -174,6 +174,9 @@
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
+;; AI stuff
+(use-package agent-shell :ensure t)
+
 ;; Keybindings (I am evil)
 ;; Any keybindings I set above also work in vanilla Emacs
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
