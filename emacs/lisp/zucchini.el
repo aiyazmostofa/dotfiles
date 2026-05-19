@@ -1,6 +1,7 @@
 ;;; zucchini.el --- Per project keybindings and task runner -*- lexical-binding: t; -*-
 
 (defvar zucchini--tasks nil)
+(defvar zucchini-project-directory nil)
 
 (defun zucchini--separate-tasks (lst)
   (if lst
@@ -31,12 +32,14 @@
            (key (vector symbol))
            (task (assoc key zucchini--tasks 'equal)))
       (unless task (error "No task for %s" key))
-      (funcall `(lambda () ,@(cdr task))))))
+      (dlet ((zucchini-project-directory project-directory))
+        (funcall `(lambda () ,@(cdr task)))))))
 
 (defun zucchini-compile (command)
-  (select-window
-   (get-buffer-window
-    (compile command))))
+  (dlet ((default-directory zucchini-project-directory))
+    (select-window
+     (get-buffer-window
+      (compile command)))))
 
 (provide 'zucchini)
 
