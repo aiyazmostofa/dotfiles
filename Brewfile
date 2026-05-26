@@ -1,4 +1,5 @@
 brew "cmake"
+brew "gcc"
 brew "libtool"
 brew "mise"
 brew "ripgrep"
