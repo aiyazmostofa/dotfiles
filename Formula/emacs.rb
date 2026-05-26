@@ -18,11 +18,6 @@ class Emacs < Formula
     # Hack to make this build on immutable distros (where /home -> /var/home)
     ENV["HOMEBREW_PREFIX"] = HOMEBREW_PREFIX.realpath
 
-    # Copied this from
-    # 'https://github.com/NixOS/nixpkgs/blob/c9d1572336ba8ba2936add51ea4615a6bc1effaa/pkgs/applications/editors/emacs/make-emacs.nix'
-    # to make the generated dump file hermetic.
-    inreplace "src/Makefile.in", "RUN_TEMACS = ./temacs", "RUN_TEMACS = env -i ./temacs"
-
     system "./configure", *args
     system "make", "install"
 
