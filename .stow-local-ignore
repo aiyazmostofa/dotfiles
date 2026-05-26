@@ -1,5 +1,6 @@
 ^\.git
 ^Brewfile
+^Formula
 ^LICENSE
 ^README\.org
 ^setup\.sh

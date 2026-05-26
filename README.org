@@ -2,8 +2,20 @@
 My dotfiles.
 
 ** Usage
-Tested on Bluefin DX and Bazzite DX. Run the =setup.sh= script
-initially. Run the =sync.sh= to sync.
+First, clone the repository with:
+
+#+begin_src sh
+brew tap aiyazmostofa/dotfiles git@github.com:aiyazmostofa/dotfiles.git
+#+end_src
+
+Then, enter the repository using:
+
+#+begin_src sh
+cd $(brew --repository aiyazmostofa/dotfiles)
+#+end_src
+
+Run =setup.sh= to complete the initial setup.
+To sync the dotfiles, run =sync.sh=.
 
 If you are not using a UBlue machine, then ensure that you have =brew= and =fish= installed first.
 No warranty is provided with these dotfiles.
