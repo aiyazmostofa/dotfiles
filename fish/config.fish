@@ -1,7 +1,7 @@
-fish_add_path --path --append $HOME/.local/bin
+fish_add_path --path --append "$HOME/.local/bin"
 fish_add_path --path --append /home/linuxbrew/.linuxbrew/bin
-if not contains /home/linuxbrew/.linuxbrew/share $XDG_DATA_DIRS
-    set -gx XDG_DATA_DIRS (string join : $XDG_DATA_DIRS /home/linuxbrew/.linuxbrew/share)
+if not contains /home/linuxbrew/.linuxbrew/share "$XDG_DATA_DIRS"
+    set -gx XDG_DATA_DIRS (string join : "$XDG_DATA_DIRS" /home/linuxbrew/.linuxbrew/share)
 end
 
 if test "$INSIDE_EMACS" = "vterm"

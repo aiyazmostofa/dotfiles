@@ -11,7 +11,7 @@ brew tap aiyazmostofa/dotfiles git@github.com:aiyazmostofa/dotfiles.git
 Then, enter the repository using:
 
 #+begin_src sh
-cd $(brew --repository aiyazmostofa/dotfiles)
+cd "$(brew --repository aiyazmostofa/dotfiles)"
 #+end_src
 
 Run =setup.sh= to complete the initial setup.
