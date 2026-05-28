@@ -29,9 +29,9 @@
 (load custom-file 'noerror)
 
 ;; Cosmetic
-(setq my-font-name-mono "JetBrainsMono Nerd Font")
+(setq my-font-name-mono "ZedMono Nerd Font")
 (setq my-font-name-sans "Adwaita Sans")
-(setq my-font-size 130)
+(setq my-font-size 150)
 (my-font-change-size 0)
 (use-package modus-themes :ensure t)
 (use-package standard-themes :ensure t)

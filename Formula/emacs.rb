@@ -5,8 +5,14 @@ class Emacs < Formula
   sha256 "b3f36f18a6dd2715713370166257de2fae01f9d38cfe878ced9b1e6ded5befd9"
   license "GPL-3.0-or-later"
 
+  depends_on "make" => :build
+  depends_on "pkgconf" => :build
+
+  depends_on "attr"
+  depends_on "glibc"
   depends_on "gnutls"
   depends_on "gtk+3"
+  depends_on "libselinux"
   depends_on "tree-sitter@0.25"
 
   def install

@@ -1,5 +1,6 @@
 * Dotfiles
 My dotfiles.
+Should work on Bluefin DX and Bluefin Dakota.
 
 ** Usage
 First, clone the repository with:
@@ -15,11 +16,8 @@ cd "$(brew --repository aiyazmostofa/dotfiles)"
 #+end_src
 
 Run =setup.sh= to complete the initial setup.
+If something fails, keep retrying until it succeeds (very scuffed).
 To sync the dotfiles, run =sync.sh=.
-
-If you are not using a UBlue machine, then ensure that you have =brew= and =fish= installed first.
-No warranty is provided with these dotfiles.
-Use at your own risk!
 
 ** License
 [[file:LICENSE][GNU General Public License v3.0]]
