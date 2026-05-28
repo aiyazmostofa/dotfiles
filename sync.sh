@@ -1,4 +1,4 @@
 #!/bin/sh
 PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-brew bundle --file=./Brewfile --verbose
-stow --adopt --no-folding -t ~/.config .
+brew bundle --file=./Brewfile
+stow --no-folding -t ~/.config .
