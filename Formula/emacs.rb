@@ -34,7 +34,6 @@ class Emacs < Formula
     # Ensure that the right version of Tree-sitter is used
     tree_sitter = Formula["tree-sitter@0.25"]
     ENV.append "LDFLAGS", "-L#{tree_sitter.opt_lib}"
-    ENV.append "LDFLAGS", "-Wl,-rpath,#{tree_sitter.opt_lib}"
     ENV.prepend_path "LIBRARY_PATH", tree_sitter.opt_lib
     ENV.prepend_path "CPATH", tree_sitter.opt_include
 
@@ -47,7 +46,7 @@ class Emacs < Formula
     # Remove files that conflict with other Brew things
     rm share/"glib-2.0/schemas/gschemas.compiled"
 
-    # Add libgcc to libgccjit driver flags
+    # Add libgcc detection via native compiler linker flags
     gcc = Formula["gcc@15"]
     (share/"emacs/site-lisp/site-start.el").write <<~EOS
       (setq native-comp-driver-options

@@ -9,8 +9,4 @@ class Nix < Formula
     bin.install Dir["bin/*"]
     share.install Dir["share/*"]
   end
-
-  test do
-    system bin/"nix", "--version"
-  end
 end

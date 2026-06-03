@@ -1,3 +1,4 @@
+/.agent-shell/
 .zucchini.el
 .dir-locals-2.el
 mise.local.toml
