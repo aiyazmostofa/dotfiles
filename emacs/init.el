@@ -44,7 +44,6 @@
 (use-package loon-line
   :load-path "lisp/"
   :config (setq-default mode-line-format loon-line))
-(use-package prot-ptyxis :load-path "lisp/")
 
 ;; Supercharging Emacs's defaults
 (use-package orderless
@@ -159,7 +158,9 @@
   (global-treesit-auto-mode))
 
 ;; AI stuff
-(use-package agent-shell :ensure t)
+(use-package agent-shell
+  :ensure t
+  :defer t)
 
 ;; Keybindings (I am evil)
 ;; Any keybindings I set above also work in vanilla Emacs
