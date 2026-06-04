@@ -15,9 +15,8 @@ Then, enter the repository using:
 cd "$(brew --repository aiyazmostofa/dotfiles)"
 #+end_src
 
-Run =setup.sh= to complete the initial setup.
+Run =sync.sh= to complete the initial setup.
 If something fails, keep retrying until it succeeds (very scuffed).
-To sync the dotfiles, run =sync.sh=.
 
 ** License
 [[file:LICENSE][GNU General Public License v3.0]]
