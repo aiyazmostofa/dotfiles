@@ -1,23 +1,23 @@
-;;; loon-line.el --- A personal mode-line -*- lexical-binding: t; -*-
+;;; mo-line.el --- A personal mode-line -*- lexical-binding: t; -*-
 
 ;; Usage:
-;; (setq-default mode-line-format loon-line)
+;; (setq-default mode-line-format mo-line)
 
-(defun loon-line--state-bg ()
+(defun mo-line--state-bg ()
   (face-attribute
    (if (mode-line-window-selected-p)
        'font-lock-keyword-face
      'mode-line-inactive)
    :foreground))
 
-(defun loon-line--state-fg ()
+(defun mo-line--state-fg ()
   (face-attribute
    (if (mode-line-window-selected-p)
        'default
      'mode-line-inactive)
    :background))
 
-(defun loon-line--state-symbol ()
+(defun mo-line--state-symbol ()
   (cond
    ((not (bound-and-true-p evil-mode)) "")
    ((evil-normal-state-p) " <N> ")
@@ -29,20 +29,20 @@
    ((evil-insert-state-p) " <I> ")
    (t " <E> ")))
 
-(defun loon-line--state-indicator ()
+(defun mo-line--state-indicator ()
   (propertize
-   (loon-line--state-symbol)
+   (mo-line--state-symbol)
    'face
-   (list ':background (loon-line--state-bg)
-         ':foreground (loon-line--state-fg)
-         ':box `(:line-width 1 :color ,(loon-line--state-bg)))))
+   (list ':background (mo-line--state-bg)
+         ':foreground (mo-line--state-fg)
+         ':box `(:line-width 1 :color ,(mo-line--state-bg)))))
 
-(defun loon-line--dirty-buffer-indicator ()
+(defun mo-line--dirty-buffer-indicator ()
   (if (and buffer-file-name (buffer-modified-p))
       (propertize " *" 'face 'error)
     ""))
 
-(defun loon-line--zoom-value ()
+(defun mo-line--zoom-value ()
   (if (and (display-graphic-p)
            (not (zerop text-scale-mode-amount)))
       (concat
@@ -50,29 +50,29 @@
        (number-to-string text-scale-mode-amount))
     ""))
 
-(defun loon-line--zoom-indicator ()
-  (propertize (loon-line--zoom-value) 'face 'success))
+(defun mo-line--zoom-indicator ()
+  (propertize (mo-line--zoom-value) 'face 'success))
 
-(defun loon-line--mode-string-unformatted ()
+(defun mo-line--mode-string-unformatted ()
   (substring (symbol-name major-mode) 0 -5))
 
-(defun loon-line--mode-string-formatted ()
+(defun mo-line--mode-string-formatted ()
   (capitalize
-   (string-replace "-" " " (loon-line--mode-string-unformatted))))
+   (string-replace "-" " " (mo-line--mode-string-unformatted))))
 
-(defun loon-line--mode-indicator ()
-  (format "(%s)" (loon-line--mode-string-formatted)))
+(defun mo-line--mode-indicator ()
+  (format "(%s)" (mo-line--mode-string-formatted)))
 
-(defconst loon-line
+(defconst mo-line
   '("%e"
-    (:eval (loon-line--state-indicator))
+    (:eval (mo-line--state-indicator))
     (:eval (propertize (format " %s" (buffer-name)) 'face 'bold))
-    (:eval (loon-line--dirty-buffer-indicator))
-    (:eval (loon-line--zoom-indicator))
+    (:eval (mo-line--dirty-buffer-indicator))
+    (:eval (mo-line--zoom-indicator))
     mode-line-format-right-align
-    (:eval (loon-line--mode-indicator))
+    (:eval (mo-line--mode-indicator))
     (:eval (if (bound-and-true-p eglot--managed-mode) "[LSP] " " "))))
 
-(provide 'loon-line)
+(provide 'mo-line)
 
-;;; loon-line.el ends here
+;;; mo-line.el ends here

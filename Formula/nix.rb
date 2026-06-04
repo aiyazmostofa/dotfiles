@@ -10,7 +10,6 @@ class Nix < Formula
 
   def install
     system "mkdir", "out"
-
     system "podman", "run", "--rm", "-v", "./out:/out:Z", "docker.io/nixos/nix", "sh", "-c", <<~EOS
       nix-channel --update
       nix-build "<nixpkgs>" -A nixStatic -o /tmp/out
@@ -21,7 +20,6 @@ class Nix < Formula
       "
       chmod -R u+w /out
     EOS
-
     bin.install Dir["out/bin/*"]
     share.install Dir["out/share/*"]
   end

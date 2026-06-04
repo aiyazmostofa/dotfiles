@@ -41,9 +41,9 @@
 (use-package spacious-padding
   :ensure t
   :config (spacious-padding-mode 1))
-(use-package loon-line
+(use-package mo-line
   :load-path "lisp/"
-  :config (setq-default mode-line-format loon-line))
+  :config (setq-default mode-line-format mo-line))
 
 ;; Supercharging Emacs's defaults
 (use-package orderless
@@ -93,7 +93,7 @@
   :after magit
   :ensure t
   :custom (auth-sources '("~/.ssh/authinfo")))
-(use-package zucchini :load-path "lisp/")
+(use-package etask :load-path "lisp/")
 (add-to-list 'directory-abbrev-alist '("^/nix" . "/var/nix"))
 
 ;; Things that make text editing less bad
@@ -195,7 +195,7 @@
     "j" (my-key-prefix "C-c C-")
     "h" (my-key-prefix "C-h ")
     "p" (my-key-prefix "C-x p ")
-    "g" #'zucchini-play
+    "g" #'etask-play
     "r" #'consult-ripgrep
     "b" #'consult-buffer
     "l" #'consult-line
