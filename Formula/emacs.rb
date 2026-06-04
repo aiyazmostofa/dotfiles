@@ -21,7 +21,7 @@ class Emacs < Formula
     args = std_configure_args + %w[
       --with-pgtk
       --with-tree-sitter
-      --with-native-compilation
+      --with-native-compilation=aot
     ]
 
     # Libgccjit is a special library that isn't in pkgconf
