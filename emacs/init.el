@@ -37,7 +37,7 @@
 (use-package standard-themes :ensure t)
 (use-package ef-themes :ensure t)
 (use-package doric-themes :ensure t)
-(modus-themes-select 'ef-owl)
+(modus-themes-select 'ef-autumn)
 (use-package spacious-padding
   :ensure t
   :config (spacious-padding-mode 1))
@@ -103,8 +103,12 @@
   :custom (eglot-autoshutdown t)
   :hook (prog-mode . eglot-ensure)
   :config
-  (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
-  (advice-add 'eglot-completion-at-point :around #'cape-wrap-noninterruptible)
+  (advice-add
+   'eglot-completion-at-point
+   :around #'cape-wrap-buster)
+  (advice-add
+   'eglot-completion-at-point
+   :around #'cape-wrap-noninterruptible)
   :bind
   (:map eglot-mode-map
         ("C-c r" . 'eglot-rename)
@@ -141,33 +145,13 @@
   :ensure t
   :defer t)
 (my-install-languages
- auctex!
- csv
- dockerfile
- fish
- haskell
- just
- kotlin-ts
- markdown
- meson
- nix
- tuareg!
- yaml)
+ auctex! csv dockerfile fish haskell just kotlin-ts markdown meson
+ nix tuareg! yaml)
 (use-package treesit-auto
   :ensure t
   :custom
   (treesit-auto-langs
-   '(cmake
-     go
-     toml
-     rust
-     typescript
-     tsx
-     c
-     java
-     cpp
-     typst
-     kotlin))
+   '(cmake go toml rust typescript tsx c java cpp typst kotlin))
   (treesit-auto-install t)
   :config
   (treesit-auto-install-all)

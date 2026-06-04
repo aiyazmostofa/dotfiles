@@ -1,6 +1,6 @@
 * Dotfiles
 My dotfiles.
-Should work on Bluefin DX and Bluefin Dakota.
+Should work on Bluefin DX, Bluefin Dakota, and Bazzite DX.
 
 ** Usage
 First, clone the repository with:
