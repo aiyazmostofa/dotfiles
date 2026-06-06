@@ -12,12 +12,12 @@ class Nix < Formula
     system "mkdir", "out"
     system "podman", "run", "--rm", "-v", "./out:/out:Z", "docker.io/nixos/nix", "sh", "-c", <<~EOS
       nix-channel --update
-      nix-build "<nixpkgs>" -A nixStatic -o /tmp/out
-      nix-build "<nixpkgs>" -A nixStatic.man -o /tmp/out
-      nix-shell -p rsync --run "
+      nix-build '<nixpkgs>' -A nixStatic -o /tmp/out
+      nix-build '<nixpkgs>' -A nixStatic.man -o /tmp/out
+      nix-shell -p rsync --run '
         rsync -a --copy-unsafe-links /tmp/out/ /out/
         rsync -a --copy-unsafe-links /tmp/out-man/ /out/
-      "
+      '
       chmod -R u+w /out
     EOS
     bin.install Dir["out/bin/*"]

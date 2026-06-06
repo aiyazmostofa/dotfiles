@@ -27,17 +27,18 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (load custom-file 'noerror)
+(use-package delsel :hook (after-init . delete-selection-mode))
 
 ;; Cosmetic
-(setq my-font-name-mono "JetBrainsMono Nerd Font")
-(setq my-font-name-sans "Adwaita Sans")
+(setq my-font-name-mono "BlexMono Nerd Font")
+(setq my-font-name-sans "IBM Plex Sans")
 (setq my-font-size 140)
 (my-font-change-size 0)
 (use-package modus-themes :ensure t)
 (use-package standard-themes :ensure t)
 (use-package ef-themes :ensure t)
 (use-package doric-themes :ensure t)
-(modus-themes-select 'ef-autumn)
+(modus-themes-select 'ef-duo-dark)
 (use-package spacious-padding
   :ensure t
   :config (spacious-padding-mode 1))
@@ -61,7 +62,6 @@
   :config (vertico-mode 1))
 (use-package vertico-directory
   :after vertico
-  :ensure nil
   :bind
   (:map vertico-map
         ("C-<backspace>" . vertico-directory-delete-word)))
@@ -144,13 +144,13 @@
   :ensure t
   :defer t)
 (my-install-languages
- auctex! csv dockerfile fish haskell just kotlin-ts markdown meson
- nix tuareg! yaml)
+ auctex! cmake csv dockerfile fish haskell janet just kotlin-ts
+ markdown meson nix tuareg! yaml)
 (use-package treesit-auto
   :ensure t
   :custom
   (treesit-auto-langs
-   '(cmake go toml rust typescript tsx c java cpp typst kotlin))
+   '(go toml rust typescript tsx c java cpp typst kotlin))
   (treesit-auto-install t)
   :config
   (treesit-auto-install-all)

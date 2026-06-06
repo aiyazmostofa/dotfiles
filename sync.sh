@@ -1,10 +1,10 @@
 #!/bin/sh
-if [ "$SHELL" != "/usr/bin/fish" ]; then
+if [ "$SHELL" != /usr/bin/fish ]; then
     sudo usermod --shell /usr/bin/fish "$USER"
 fi
 if [ ! -e /var/nix ]; then
-    sudo mkdir -p /var/nix
-    sudo chown -v -R "$USER:$USER" /var/nix
+    sudo mkdir /var/nix
+    sudo chown -R "$USER:$USER" /var/nix
 fi
 if [ ! -e "$HOME/.dotfiles" ]; then
     ln -s "$(brew --repository aiyazmostofa/dotfiles)" "$HOME/.dotfiles"
