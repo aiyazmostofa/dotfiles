@@ -13,6 +13,12 @@ You can rebuild the configuration using the =just= command.
 When you want to update channels, edit the =Justfile= accordingly and run =just update=.
 You can format the Nix files with =just format=.
 
+*** Quirks
+- Gnome extensions are not enabled by default
+- Don't use the GNOME store (very slow), install Bazaar via Flathub
+- Enroll your fingerprint through =fprintd-enroll=
+- Eglot in Emacs might be fried and needs to be updated (not sure)
+
 ** Configuration
 Fill out the =my= attribute set with your information.
 =stateVersion= corresponds to the =system.stateVersion= in your original =configuration.nix=.
