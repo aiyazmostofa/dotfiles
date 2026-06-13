@@ -1,4 +1,3 @@
 /.agent-shell/
 .dir-locals-2.el
 .etask.el
-mise.local.toml

@@ -1,22 +1,33 @@
 * Dotfiles
-My dotfiles.
-Should work on Bluefin DX, Bluefin Dakota, and Bazzite DX (KDE).
+My (NixOS) dotfiles.
+
+** Setup
+1. Clone this repo
+   + You can/should clone this somewhere in your home folder
+2. Edit the =configuration.nix= to your liking (described in the Configuration section)
+3. Run =just update= to complete the setup
+   + Run =nix-shell -p just= if you don't have =just= installed
 
 ** Usage
-First, clone the repository with:
+You can rebuild the configuration using the =just= command.
+When you want to update channels, edit the =Justfile= accordingly and run =just update=.
+You can format the Nix files with =just format=.
 
-#+begin_src sh
-brew tap aiyazmostofa/dotfiles git@github.com:aiyazmostofa/dotfiles.git
-#+end_src
+** Configuration
+Fill out the =my= attribute set with your information.
+=stateVersion= corresponds to the =system.stateVersion= in your original =configuration.nix=.
+Uncomment the laptop or desktop import if you want specific customizations.
 
-Then, enter the repository using:
+*** Laptop
+Provides support for my Framework Laptop 13 with the Ryzen 5 7640U (via the NixOS hardware channels).
+I also remap some keys to my liking:
 
-#+begin_src sh
-cd "$(brew --repository aiyazmostofa/dotfiles)"
-#+end_src
+- =leftalt= <-> =leftmeta=
+- =capslock= <-> =esc=
 
-Run =sync.sh= to complete the initial setup.
-If something fails, keep retrying until it succeeds (very scuffed).
+*** Desktop
+Provides support for my gaming PC with a RTX 4070 Super (Nvidia drivers).
+I also install Steam with GE-Proton support.
 
 ** License
 [[file:LICENSE][GNU General Public License v3.0]]

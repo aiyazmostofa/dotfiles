@@ -48,27 +48,6 @@
 (defmacro my-install-languages (&rest languages)
   `(progn ,@(mapcar #'my--install-language languages)))
 
-(defun my-locate-dominating-files (file names)
-  (cl-some
-   (lambda (name) (locate-dominating-file file name))
-   names))
-
-(defvar my-project-environment nil)
-(defun my-vterm (arg)
-  (interactive "P")
-  (let ((shell "fish")
-        (dominators '(".")))
-    (pcase my-project-environment
-      (`'nix
-       (setq shell "nix develop -c fish"
-             dominators '("flake.nix")))
-      (`'mise
-       (setq shell "mise en"
-             dominators '("mise.local.toml" "mise.toml"))))
-    (dlet ((vterm-shell shell)
-           (default-directory (my-locate-dominating-files "." dominators)))
-      (vterm arg))))
-
 (provide 'my)
 
 ;;; my.el ends here

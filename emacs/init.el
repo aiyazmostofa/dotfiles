@@ -38,7 +38,8 @@
 (use-package standard-themes :ensure t)
 (use-package ef-themes :ensure t)
 (use-package doric-themes :ensure t)
-(modus-themes-select 'ef-duo-dark)
+(unless (bound-and-true-p custom-enabled-themes)
+  (modus-themes-select 'standard-light))
 (use-package spacious-padding
   :ensure t
   :config (spacious-padding-mode 1))
@@ -86,6 +87,9 @@
 (use-package exec-path-from-shell
   :ensure t
   :config (exec-path-from-shell-initialize))
+(use-package envrc
+  :ensure t
+  :hook (after-init . envrc-global-mode))
 (use-package magit
   :ensure t
   :defer t)
@@ -94,7 +98,6 @@
   :ensure t
   :custom (auth-sources '("~/.ssh/authinfo")))
 (use-package etask :load-path "lisp/")
-(add-to-list 'directory-abbrev-alist '("^/nix" . "/var/nix"))
 
 ;; Things that make text editing less bad
 (use-package cape :ensure t)
@@ -186,7 +189,7 @@
     "SPC" #'execute-extended-command
     "u" #'universal-argument
     "k" #'kill-current-buffer
-    "v" #'my-vterm
+    "v" #'vterm
     "-" (lambda () (interactive) (my-font-change-size -10))
     "=" (lambda () (interactive) (my-font-change-size +10))
     "x" (my-key-prefix "C-x ")
