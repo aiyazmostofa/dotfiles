@@ -16,7 +16,8 @@ You can format the Nix files with =just format=.
 *** Features
 - GNOME
 - Preconfigured Emacs + Fish + Ghostty
-  + For personal enjoyment
+  + For personal enjoyment, not meant for external use
+- Direnv
 - Distrobox/Podman
 - Docker
 - QEMU + KVM + libvirtd
@@ -24,16 +25,17 @@ You can format the Nix files with =just format=.
   + GNOME Boxes
 - Flathub
 - Tailscale
-- CUPS
 - Automatic software updates/garbage collection
 - Steam (only on Desktop)
-- Nvidia Drivers (only on Desktop)
+- Nvidia drivers (only/required on Desktop)
 
 *** Quirks
 - Gnome extensions are not enabled by default
+  + You can enable them in the Extensions app
 - Don't use the GNOME store (very slow and janky)
   + Install Bazaar on Flathub as a replacement
 - Enroll your fingerprint through =fprintd-enroll=
+  + GUI is not picking it up for some reason
 - Log into Tailscale using =sudo tailscale login=
 - Eglot in Emacs might be fried and needs to be updated (not sure)
 
