@@ -13,10 +13,28 @@ You can rebuild the configuration using the =just= command.
 When you want to update channels, edit the =Justfile= accordingly and run =just update=.
 You can format the Nix files with =just format=.
 
+*** Features
+- GNOME
+- Preconfigured Emacs + Fish + Ghostty
+  + For personal enjoyment
+- Distrobox/Podman
+- Docker
+- QEMU + KVM + libvirtd
+  + virt-manager
+  + GNOME Boxes
+- Flathub
+- Tailscale
+- CUPS
+- Automatic software updates/garbage collection
+- Steam (only on Desktop)
+- Nvidia Drivers (only on Desktop)
+
 *** Quirks
 - Gnome extensions are not enabled by default
-- Don't use the GNOME store (very slow), install Bazaar via Flathub
+- Don't use the GNOME store (very slow and janky)
+  + Install Bazaar on Flathub as a replacement
 - Enroll your fingerprint through =fprintd-enroll=
+- Log into Tailscale using =sudo tailscale login=
 - Eglot in Emacs might be fried and needs to be updated (not sure)
 
 ** Configuration
