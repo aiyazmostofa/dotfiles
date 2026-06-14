@@ -21,7 +21,6 @@
  indent-tabs-mode nil
  cursor-type 'bar
  electric-indent-inhibit t)
-(recentf-mode 1)
 (global-display-line-numbers-mode -1)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -30,8 +29,8 @@
 (use-package delsel :hook (after-init . delete-selection-mode))
 
 ;; Cosmetic
-(setq my-font-name-mono "BlexMono Nerd Font")
-(setq my-font-name-sans "IBM Plex Sans")
+(setq my-font-name-mono "IoskeleyMono Nerd Font")
+(setq my-font-name-sans "Adwaita Sans")
 (setq my-font-size 140)
 (my-font-change-size 0)
 (use-package modus-themes :ensure t)
@@ -97,6 +96,9 @@
   :after magit
   :ensure t
   :custom (auth-sources '("~/.ssh/authinfo")))
+(use-package recentf
+  :custom (recentf-max-saved-items 100)
+  :config (recentf-mode 1))
 (use-package etask :load-path "lisp/")
 
 ;; Things that make text editing less bad

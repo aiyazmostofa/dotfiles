@@ -163,7 +163,8 @@
     # https://wiki.nixos.org/wiki/Fonts
     fonts.packages = with pkgs; [
       nerd-fonts.blex-mono
-      ibm-plex
+      nerd-fonts.jetbrains-mono
+      ioskeley-mono.normal-NF
     ];
 
     # https://nixos.wiki/wiki/Flakes
