@@ -22,6 +22,9 @@
     stateVersion = lib.mkOption {
       type = lib.types.str;
     };
+    dotfiles = lib.mkOption {
+      type = lib.types.str;
+    };
   };
 
   config = {
@@ -185,7 +188,7 @@
             "-"
             "-"
             "-"
-            "${toString ./.}${p}"
+            "${config.my.dotfiles}${p}"
           ];
       in
       [
