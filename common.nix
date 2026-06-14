@@ -131,17 +131,14 @@
     virtualisation.podman.enable = true;
     virtualisation.docker.enable = true;
 
-    # https://nixos.wiki/wiki/Libvirt
-    virtualisation.libvirtd = {
-      enable = true;
-      qemu = {
-        package = pkgs.qemu_kvm;
-        runAsRoot = true;
-        swtpm.enable = true;
-      };
+    # https://wiki.nixos.org/wiki/Libvirt
+    virtualisation.libvirtd.enable = true;
+    virtualisation.libvirtd.qemu = {
+      swtpm.enable = true;
     };
+    virtualisation.spiceUSBRedirection.enable = true;
 
-    # https://nixos.wiki/wiki/Flatpak
+    # https://wiki.nixos.org/wiki/Flatpak
     services.flatpak.enable = true;
     systemd.services.flatpak-repo = {
       wantedBy = [ "multi-user.target" ];
@@ -167,7 +164,7 @@
       ioskeley-mono.normal-NF
     ];
 
-    # https://nixos.wiki/wiki/Flakes
+    # https://wiki.nixos.org/wiki/Flakes
     nix.settings.experimental-features = [
       "nix-command"
       "flakes"

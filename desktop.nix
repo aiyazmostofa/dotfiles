@@ -1,16 +1,9 @@
 { config, pkgs, ... }:
 {
-  # https://nixos.wiki/wiki/Nvidia
+  # https://wiki.nixos.org/wiki/NVIDIA
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
+  hardware.nvidia.modesetting.enable = true;
 
   # https://wiki.nixos.org/wiki/Steam
   programs.steam.enable = true;
