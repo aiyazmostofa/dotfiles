@@ -125,6 +125,7 @@
       dates = "02:00";
       randomizedDelaySec = "45min";
       allowReboot = false;
+      operation = "boot";
     };
 
     # Podman and Docker
