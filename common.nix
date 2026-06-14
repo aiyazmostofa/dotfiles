@@ -122,7 +122,9 @@
     # https://wiki.nixos.org/wiki/Automatic_system_upgrades
     system.autoUpgrade = {
       enable = true;
-      dates = "daily";
+      dates = "02:00";
+      randomizedDelaySec = "45min";
+      allowReboot = false;
     };
 
     # Podman and Docker
@@ -149,11 +151,13 @@
       '';
     };
 
-    # https://nixos.wiki/wiki/Storage_optimization
+    # https://wiki.nixos.org/wiki/Storage_optimization
+    nix.optimise.automatic = true;
+    nix.optimise.dates = [ "03:45" ];
     nix.gc = {
       automatic = true;
-      dates = "daily";
-      options = "--delete-older-than 14d";
+      dates = "weekly";
+      options = "--delete-older-than 30d";
     };
 
     # https://wiki.nixos.org/wiki/Fonts
@@ -163,7 +167,10 @@
     ];
 
     # https://nixos.wiki/wiki/Flakes
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
 
     # https://matklad.github.io/2026/05/21/symlinking-nixos-dotfiles.html
     systemd.tmpfiles.rules =
