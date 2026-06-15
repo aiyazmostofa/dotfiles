@@ -123,6 +123,10 @@
     system.autoUpgrade = {
       enable = true;
       dates = "02:00";
+      flags = [
+        "-I"
+        "nixos-config=${config.my.dotfiles}/configuration.nix"
+      ];
       randomizedDelaySec = "45min";
       allowReboot = false;
       operation = "boot";
