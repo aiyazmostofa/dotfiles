@@ -206,7 +206,8 @@
     "l" #'consult-line
     "a" #'my-arrange-windows
     "s" #'other-window
-    "d" #'delete-window))
+    "d" #'delete-window
+    "e" #'envrc-reload))
 (use-package evil-collection
   :after evil
   :ensure t

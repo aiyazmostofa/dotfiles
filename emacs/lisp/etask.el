@@ -35,11 +35,11 @@
       (dlet ((etask-project-directory project-directory))
         (funcall `(lambda () ,@(cdr task)))))))
 
-(defun etask-compile (command)
+(defun etask-compile (format-string &rest args)
   (dlet ((default-directory etask-project-directory))
     (select-window
      (get-buffer-window
-      (compile command)))))
+      (compile (apply #'format format-string args))))))
 
 (provide 'etask)
 
