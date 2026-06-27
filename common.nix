@@ -78,6 +78,10 @@
             repeat-interval = lib.gvariant.mkUint32 25;
             delay = lib.gvariant.mkUint32 250;
           };
+
+          "org/gnome/settings-daemon/plugins/power" = {
+            ambient-enabled = false;
+          };
         };
       }
     ];
