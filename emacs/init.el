@@ -120,9 +120,7 @@
         ("C-c a" . 'eglot-code-actions)))
 (use-package corfu
   :ensure t
-  :custom
-  (corfu-auto t)
-  (corfu-auto-delay 0.1)
+  :custom (corfu-auto t)
   :hook (prog-mode . corfu-mode)
   :bind (:map corfu-map ("RET" . nil)))
 (use-package yasnippet
@@ -165,7 +163,8 @@
 ;; AI stuff
 (use-package agent-shell
   :ensure t
-  :defer t)
+  :defer t
+  :bind (:map agent-shell-mode-map ("RET" . nil)))
 
 ;; Keybindings (I am evil)
 ;; Any keybindings I set above also work in vanilla Emacs

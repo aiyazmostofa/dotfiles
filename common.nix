@@ -44,6 +44,44 @@
     services.displayManager.gdm.enable = true;
     services.desktopManager.gnome.enable = true;
 
+    # https://wiki.nixos.org/wiki/GNOME
+    programs.dconf.profiles.user.databases = [
+      {
+        lockAll = true;
+        settings = {
+          "org/gnome/shell" = {
+            enabled-extensions = with pkgs.gnomeExtensions; [
+              alphabetical-app-grid.extensionUuid
+              blur-my-shell.extensionUuid
+              caffeine.extensionUuid
+            ];
+          };
+
+          "org/gnome/desktop/interface" = {
+            enable-hot-corners = false;
+          };
+
+          # https://edoput.it/gnome/2018/07/09/gnome-settings.html
+          "org/gnome/desktop/wm/preferences" = {
+            focus-mode = "sloppy";
+            auto-raise = true;
+            auto-raise-delay = lib.gvariant.mkInt32 0;
+          };
+
+          "org/gnome/desktop/peripherals/touchpad" = {
+            natural-scroll = false;
+            tap-to-click = false;
+          };
+
+          "org/gnome/desktop/peripherals/keyboard" = {
+            repeat = true;
+            repeat-interval = lib.gvariant.mkUint32 25;
+            delay = lib.gvariant.mkUint32 250;
+          };
+        };
+      }
+    ];
+
     # Printing
     services.printing.enable = true;
 

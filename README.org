@@ -30,14 +30,11 @@ You can format the Nix files with =just format=.
 - Nvidia drivers (only/required on Desktop)
 
 *** Quirks
-- Gnome extensions are not enabled by default
-  + You can enable them in the Extensions app
 - Don't use the GNOME store (very slow and janky)
   + Install Bazaar on Flathub as a replacement
 - Enroll your fingerprint through =fprintd-enroll=
   + GUI is not picking it up for some reason
 - Log into Tailscale using =sudo tailscale login=
-- Eglot in Emacs might be fried and needs to be updated (not sure)
 
 ** Configuration
 Fill out the =my= attribute set with your information.
